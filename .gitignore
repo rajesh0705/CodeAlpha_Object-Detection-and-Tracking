@@ -1,0 +1,60 @@
+# 🔹 Python cache files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.py[cod]
+
+# 🔹 Virtual environment
+venv/
+env/
+.venv/
+ENV/
+
+# 🔹 Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# 🔹 VS Code settings
+.vscode/
+
+# 🔹 OS files
+.DS_Store
+Thumbs.db
+
+# 🔹 Logs
+*.log
+
+# 🔹 Environment variables
+.env
+
+# 🔹 Model weights (large files)
+*.pt
+*.pth
+
+# 🔹 Data files (optional - remove if you want to upload videos)
+data/input/
+data/output/
+
+# 🔹 Build / dist
+build/
+dist/
+*.egg-info/
+
+# 🔹 Temporary files
+*.tmp
+*.temp
+
+# 🔹 Cache directories
+.cache/
+
+# 🔹 Streamlit cache (if used)
+.streamlit/
+
+# 🔹 Deep learning checkpoints
+checkpoints/
+runs/
+
+# 🔹 Media outputs (optional)
+*.mp4
+*.avi
+*.mov
