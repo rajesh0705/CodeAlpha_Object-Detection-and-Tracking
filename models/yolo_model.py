@@ -2,11 +2,10 @@ from ultralytics import YOLO
 
 class YOLODetector:
     def __init__(self):
-        self.model = YOLO("weights/yolov8n.pt")
+        self.model = YOLO("models/yolov8n.pt")
 
     def detect(self, frame):
         results = self.model(frame)[0]
-
         detections = []
 
         for box in results.boxes:
@@ -14,10 +13,9 @@ class YOLODetector:
             conf = float(box.conf[0])
             cls = int(box.cls[0])
 
-            w = x2 - x1
-            h = y2 - y1
+            label = self.model.names[cls]  # ✅ object name
 
-            # ✅ Correct format for Deep SORT
-            detections.append(([x1, y1, w, h], conf, cls))
+            # Store: box + confidence + label
+            detections.append([x1, y1, x2, y2, conf, label])
 
         return detections

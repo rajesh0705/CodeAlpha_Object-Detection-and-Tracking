@@ -1,24 +1,20 @@
-from deep_sort_realtime.deepsort_tracker import DeepSort
-
 class Tracker:
     def __init__(self):
-        self.tracker = DeepSort(max_age=30)
+        pass
 
     def update(self, detections, frame):
-        tracks = self.tracker.update_tracks(detections, frame=frame)
+        tracks = []
 
-        tracked_objects = []
+        for det in detections:
+            x1, y1, x2, y2, conf, label = det
 
-        for track in tracks:
-            if not track.is_confirmed():
-                continue
+            track_id = 0  # or your SORT ID
 
-            track_id = track.track_id
-            l, t, w, h = map(int, track.to_ltrb())
-
-            tracked_objects.append({
+            tracks.append({
+                "bbox": [x1, y1, x2, y2],
                 "id": track_id,
-                "bbox": (l, t, w, h)
+                "label": label,   # ✅ keep label
+                "conf": conf
             })
 
-        return tracked_objects
+        return tracks
